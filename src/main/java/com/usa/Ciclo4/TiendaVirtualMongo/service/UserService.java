@@ -46,27 +46,27 @@ public class UserService {
                     uAux.get().setIdentification(user.getIdentification());
                 }
 
-                if(user.getName() == null){
+                if(user.getName() != null){
                     uAux.get().setName(user.getName());
                 }
 
-                if(user.getAddress() == null){
+                if(user.getAddress() != null){
                     uAux.get().setAddress(user.getAddress());
                 }
 
-                if(user.getCellPhone() == null){
+                if(user.getCellPhone() != null){
                     uAux.get().setCellPhone(user.getCellPhone());
                 }
 
-                if(user.getEmail() == null){
+                if(user.getEmail() != null){
                     uAux.get().setEmail(user.getEmail());
                 }
 
-                if(user.getPassword() == null){
+                if(user.getPassword() != null){
                     uAux.get().setPassword(user.getPassword());
                 }
 
-                if(user.getZone() == null){
+                if(user.getZone() != null){
                     uAux.get().setZone(user.getZone());
                 }
 
