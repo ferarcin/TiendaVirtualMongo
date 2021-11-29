@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/* Controlador para el documento Producto
+Base de datos en MongoDB - Documento cleaningproduct
+Author  : Ferney Alexander Arciniegas Molina
+Date    : Nov 28/2021
+ */
+
 @RestController
-@RequestMapping("/api/cleaningproducts")
+@RequestMapping("/api/cleaningproduct")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ProductController {
     @Autowired
