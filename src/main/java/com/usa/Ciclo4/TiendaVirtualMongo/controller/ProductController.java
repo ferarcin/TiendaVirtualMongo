@@ -36,19 +36,19 @@ public class ProductController {
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public Product createCleaningProduct(@RequestBody Product product){
+    public Product createProduct(@RequestBody Product product){
         return productService.createProduct(product);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Product updateCleaningProduct(@RequestBody Product product){
+    public Product updateProduct(@RequestBody Product product){
         return productService.updateProduct(product);
     }
 
     @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean deleteCleaningProduct(@PathVariable("reference") String reference){
+    public boolean deleteProduct(@PathVariable("reference") String reference){
         return productService.deleteProduct(reference);
     }
 

@@ -1,5 +1,6 @@
 package com.usa.Ciclo4.TiendaVirtualMongo.model;
 
+import com.usa.Ciclo4.TiendaVirtualMongo.Enum.UserTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class User {
     @Id
     private Integer id;
     private String identification;
+    @NonNull
     private String name;
     private String address;
     private String cellPhone;
@@ -25,5 +27,5 @@ public class User {
     @NonNull
     private String password;
     private String zone;
-    private String type;
+    private UserTypeEnum type;
 }

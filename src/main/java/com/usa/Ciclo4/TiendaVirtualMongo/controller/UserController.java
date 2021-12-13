@@ -13,6 +13,7 @@ import java.util.Optional;
 Base de datos en MongoDB - Documento User
 Author  : Ferney Alexander Arciniegas Molina
 Date    : Nov 28/2021
+Update  : Dic 12/2021
  */
 
 @RestController
@@ -28,35 +29,35 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUser(int id){
+    public Optional<User> getUser(@PathVariable("id") int id){
         return userService.getUser(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody User user){
-        return userService.crearUsuario(user);
+        return userService.createUser(user);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public User updateUser(@RequestBody User user){
-        return userService.actualizarUsuario(user);
+        return userService.updateUser(user);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean deleteUser(@PathVariable("id") int id){
-        return userService.deleteUsuario(id);
+        return userService.deleteUser(id);
     }
 
     @GetMapping("/{email}/{password}")
     public User autenticateUser(@PathVariable("email") String email, @PathVariable("password") String password){
-        return userService.autenticarUsuario(email, password);
+        return userService.autenticateUser(email, password);
     }
 
     @GetMapping("/emailexist/{email}")
     public boolean existeEmail(@PathVariable("email") String email){
-        return userService.existeEmail(email);
+        return userService.existsEmail(email);
     }
 }

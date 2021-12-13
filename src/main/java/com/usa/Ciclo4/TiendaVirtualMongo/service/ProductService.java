@@ -24,6 +24,8 @@ public class ProductService {
     public Product createProduct(Product product){
         if(product.getReference() == null){
             return product;
+        }else if(product.getReference() == "") {
+            return product;
         }else{
             return productRepository.create(product);
         }

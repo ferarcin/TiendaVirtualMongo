@@ -3,6 +3,7 @@ package com.usa.Ciclo4.TiendaVirtualMongo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
+
     @Id
+    @NonNull
     private String reference;
     private String brand;
     private String category;

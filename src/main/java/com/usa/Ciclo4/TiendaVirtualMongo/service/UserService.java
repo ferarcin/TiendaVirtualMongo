@@ -21,24 +21,34 @@ public class UserService {
         return userRepository.getUser(id);
     }
 
-    public User crearUsuario(User user){
-        if(user.getId() == null) {
-            return user;
-        }else{
-            Optional<User> uAux = userRepository.getUser(user.getId());
-            if(uAux.isEmpty()){
-                if(existeEmail(user.getEmail())==false){
-                    return userRepository.create(user);
-                }else{
-                    return user;
-                }
+    public User createUser(User user){
+        Optional<User>  userMaxId;
+
+        //si el ID del usuario es vacio, se busca el ID mas grande
+        if(user.getId() == null){
+            userMaxId = userRepository.lastUserId();
+            //si no existe un usuario en la tabla, se devuelve el código 1
+            //caso contrario se devuelve el valor ID mas alto y se le suma 1
+            if(userMaxId.isEmpty()){
+                user.setId(1);
+            }else{
+                user.setId(userMaxId.get().getId() + 1);
+            }
+        }
+
+        Optional<User> uAux = userRepository.getUser(user.getId());
+        if(uAux.isEmpty()){
+            if(existsEmail(user.getEmail())==false){
+                return userRepository.create(user);
             }else{
                 return user;
             }
+        }else{
+            return user;
         }
     }
 
-    public User actualizarUsuario(User user){
+    public User updateUser(User user){
         if(user.getId() !=null){
             Optional<User> uAux = userRepository.getUser(user.getId());
             if(!uAux.isEmpty()){
@@ -80,7 +90,7 @@ public class UserService {
         }
     }
 
-    public boolean deleteUsuario(int id){
+    public boolean deleteUserBefore(int id){
         Boolean uAux = getUser(id).map(user -> {
             userRepository.delete(user);
             return true;
@@ -88,12 +98,22 @@ public class UserService {
         return uAux;
     }
 
-    public boolean existeEmail(String email){
-        return userRepository.existeEmail(email);
+    public boolean deleteUser(int id){
+        Optional<User> usuario = getUser(id);
+        if(usuario.isEmpty()){
+            return false;
+        }else{
+            userRepository.delete(usuario.get());
+            return true;
+        }
     }
 
-    public User autenticarUsuario(String email, String password){
-        Optional<User> uaux = userRepository.autenticarUsuario(email, password);
+    public boolean existsEmail(String email){
+        return userRepository.findUserEmail(email);
+    }
+
+    public User autenticateUser(String email, String password){
+        Optional<User> uaux = userRepository.autenticateUser(email, password);
 
         if(uaux.isEmpty()){
             return new User();
