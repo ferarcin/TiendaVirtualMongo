@@ -20,8 +20,8 @@ public class User {
     private String identification;
     @NonNull
     private String name;
-    private String birthDay;
-    private String monthBirthDay;
+    private Date birthtDay;
+    private String monthBirthtDay;
     private String address;
     private String cellPhone;
 
