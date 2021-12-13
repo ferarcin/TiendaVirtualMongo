@@ -8,6 +8,8 @@ import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document(collection = "usuarios")
 @Data
 @NoArgsConstructor
@@ -18,6 +20,8 @@ public class User {
     private String identification;
     @NonNull
     private String name;
+    private Date birthDay;
+    private String monthBirthDay;
     private String address;
     private String cellPhone;
 
