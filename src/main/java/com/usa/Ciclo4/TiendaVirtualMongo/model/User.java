@@ -20,7 +20,7 @@ public class User {
     private String identification;
     @NonNull
     private String name;
-    private Date birthDay;
+    private String birthDay;
     private String monthBirthDay;
     private String address;
     private String cellPhone;
