@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+//Clase modificada en Dic 12/2021
+//Ferney Alexander Arciniegas Molina
+
 @Document(collection = "usuarios")
 @Data
 @NoArgsConstructor
