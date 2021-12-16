@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,8 @@ Revision 3
 public class OrderController {
     @Autowired
     private OrderService orderService;
+    private String status;
+    private Integer idSalesMan;
 
     @GetMapping("/all")
     public List<Order> getAll(){
@@ -59,5 +62,25 @@ public class OrderController {
     public List<Order> findOrderByZone(@PathVariable("zone") String zone){
 
         return orderService.findOrderByZone(zone);
+    }
+
+    @GetMapping("/salesman/{idSalesMan}")
+    public List<Order> findOrderByZone(@PathVariable("idSalesMan") Integer idSalesMan){
+
+        return orderService.findOrderBySalesMan(idSalesMan);
+    }
+
+    @GetMapping("/state/{status}/{idSalesMan}")
+    public List<Order> findByStatusAndSalesMan(@PathVariable("status") String status, @PathVariable("idSalesMan") Integer idSalesMan) {
+        this.status = status;
+        this.idSalesMan = idSalesMan;
+
+        return orderService.findByStatusAndSalesMan(status, idSalesMan);
+    }
+
+    @GetMapping("/date/{registerDay}/{idSalesMan}")
+    public List<Order> findByRegisterDayAndSalesMan(@PathVariable("registerDay") String registerDay, @PathVariable("idSalesMan") Integer idSalesMan) {
+
+        return orderService.findByRegisterDayAndSalesMan(registerDay, idSalesMan);
     }
 }

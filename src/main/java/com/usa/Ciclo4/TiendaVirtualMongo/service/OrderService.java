@@ -3,8 +3,10 @@ package com.usa.Ciclo4.TiendaVirtualMongo.service;
 import com.usa.Ciclo4.TiendaVirtualMongo.model.Order;
 import com.usa.Ciclo4.TiendaVirtualMongo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.BooleanOperators;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,5 +76,20 @@ public class OrderService {
     public List<Order> findOrderByZone(String zone){
 
         return orderRepository.findOrderByZone(zone);
+    }
+
+    public List<Order> findOrderBySalesMan(Integer idSalesMan){
+
+        return orderRepository.findOrderBySalesMan(idSalesMan);
+    }
+
+    public List<Order> findByStatusAndSalesMan(String status, Integer idSalesMan){
+
+        return orderRepository.findByStatusAndSalesMan(status, idSalesMan);
+    }
+
+    public List<Order> findByRegisterDayAndSalesMan(String registerDay, Integer idSalesMan){
+
+        return orderRepository.findByRegisterDayAndSalesMan(registerDay, idSalesMan);
     }
 }
