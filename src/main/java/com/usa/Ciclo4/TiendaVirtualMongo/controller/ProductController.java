@@ -53,8 +53,8 @@ public class ProductController {
     }
 
     @GetMapping("/price/{price}")
-    public Optional<Product> getProductByPrice(@PathVariable("price") Integer price){
-        return productService.findProductByPrice(price);
+    public Optional<Product> findProductByPriceGreaterThanEqual(@PathVariable("price") Integer price){
+        return productService.findProductByPriceGreaterThanEqual(price);
     }
 
     @GetMapping("/description/{description}")

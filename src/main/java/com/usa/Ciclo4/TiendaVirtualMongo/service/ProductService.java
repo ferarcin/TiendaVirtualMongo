@@ -88,9 +88,9 @@ public class ProductService {
         return pAux;
     }
 
-    public Optional<Product> findProductByPrice(Integer price){
+    public Optional<Product> findProductByPriceGreaterThanEqual(Integer price){
 
-        return productRepository.findProductByPrice(price);
+        return productRepository.findProductByPriceGreaterThanEqual(price);
     }
 
     public List<Product> findProductByDescription(String description){
