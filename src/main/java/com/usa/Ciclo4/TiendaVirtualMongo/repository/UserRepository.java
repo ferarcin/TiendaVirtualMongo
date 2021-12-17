@@ -51,4 +51,9 @@ public class UserRepository {
 
         return userInterface.findTopByOrderByIdDesc();
     }
+
+    public Optional<User> findByMonthBirthtDay(String monthBirthDay){
+
+        return userInterface.findByMonthBirthtDay(monthBirthDay);
+    }
 }
