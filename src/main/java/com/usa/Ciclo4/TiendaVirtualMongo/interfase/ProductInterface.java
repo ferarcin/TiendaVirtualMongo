@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ProductInterface extends MongoRepository<Product, String> {
     //Se usa para buscar el  produto por precio de venta.
-    Optional<Product> findProductByPriceGreaterThanEqual(Integer price);
+    Optional<Product> findProductByPriceIsLessThanEqual(Integer price);
 
     /*@Query(value= "{'description': ?0}")*/
     List<Product> findProductByDescriptionLike(String description);
