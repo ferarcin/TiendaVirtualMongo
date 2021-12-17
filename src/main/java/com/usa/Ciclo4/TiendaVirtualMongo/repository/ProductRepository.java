@@ -1,8 +1,12 @@
 package com.usa.Ciclo4.TiendaVirtualMongo.repository;
 
 import com.usa.Ciclo4.TiendaVirtualMongo.interfase.ProductInterface;
+import com.usa.Ciclo4.TiendaVirtualMongo.model.Order;
 import com.usa.Ciclo4.TiendaVirtualMongo.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +16,9 @@ import java.util.Optional;
 public class ProductRepository {
     @Autowired
     private ProductInterface productInterface;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     public List<Product> getAll(){
 
@@ -35,5 +42,21 @@ public class ProductRepository {
     public void delete(Product producto){
 
         productInterface.delete(producto);
+    }
+
+    public Optional<Product> findProductByPrice(Integer price){
+
+        return productInterface.findProductByPrice(price);
+    }
+
+    public List<Product> findProductByDescription(String description){
+        return productInterface.findProductByDescriptionLike(description);
+
+        /*Query query = new Query();
+        Criteria criteria  = Criteria.where("desciption").regex('^');
+        query.addCriteria(criteria);
+
+        List<Product> products  = mongoTemplate.find(query, Product.class);
+        return products;*/
     }
 }

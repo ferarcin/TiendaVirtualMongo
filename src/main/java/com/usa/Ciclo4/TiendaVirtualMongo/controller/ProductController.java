@@ -52,4 +52,16 @@ public class ProductController {
         return productService.deleteProduct(reference);
     }
 
+    @GetMapping("/price/{price}")
+    public Optional<Product> getProductByPrice(@PathVariable("price") Integer price){
+        return productService.findProductByPrice(price);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Product> getProductByDescription(@PathVariable("description") String description){
+
+        return productService.findProductByDescription(description);
+    }
+
+
 }
