@@ -44,7 +44,7 @@ public class ProductRepository {
         productInterface.delete(producto);
     }
 
-    public Optional<Product> findProductByPrice(Integer price){
+    public List<Product> findProductByPrice(Integer price){
 
         return productInterface.findProductByPriceLessThanEqual(price);
     }
