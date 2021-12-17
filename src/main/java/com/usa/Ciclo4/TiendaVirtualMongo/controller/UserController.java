@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @GetMapping("/birthday/{monthBirthDay}")
-    public Optional<User> findByMonthBirthtDay(@PathVariable("monthBirthDay") String monthBirthDay){
+    public List<User> findByMonthBirthtDay(@PathVariable("monthBirthDay") String monthBirthDay){
 
         return userService.findByMonthBirthtDay(monthBirthDay);
     }

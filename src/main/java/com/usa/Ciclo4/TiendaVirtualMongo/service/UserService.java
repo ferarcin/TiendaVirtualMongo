@@ -123,7 +123,7 @@ public class UserService {
         }
     }
 
-    public Optional<User> findByMonthBirthtDay(String monthBirthDay){
+    public List<User> findByMonthBirthtDay(String monthBirthDay){
 
         return userRepository.findByMonthBirthtDay(monthBirthDay);
     }

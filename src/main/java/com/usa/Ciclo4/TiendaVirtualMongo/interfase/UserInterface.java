@@ -17,5 +17,5 @@ public interface UserInterface extends MongoRepository<User, Integer> {
     Optional<User> findTopByOrderByIdDesc();
 
     //@Query(value="{'monthBirthtDay': ?0}")
-    Optional<User> findByMonthBirthtDay(String monthBirthtDay);
+    List<User> findByMonthBirthtDay(String monthBirthtDay);
 }
